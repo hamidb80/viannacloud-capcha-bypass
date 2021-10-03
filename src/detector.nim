@@ -8,7 +8,7 @@ const
   numberYRange = 8..22
 
   matchPriority = [8, 9, 6, 0, 3, 5, 2, 4, 7, 1]
-  maxValidColorPart = 210
+  maxValidColorPart = 230 # 0..210 from 255 is valid in color
 
   patterns = collect newseq:
     for n in 0..9:
@@ -16,16 +16,17 @@ const
 
 # ---------------------------------
 
-func extractNumberPics*(img: Image): seq[Image] =
-  numberXStarts.mapIt img.subImage(it, numberYRange.a, numberWidth, numberYRange.len)
-
-proc matchColor(c: ColorRGBX): bool =
-  return not (c.r > maxValidColorPart or c.b > maxValidColorPart or c.g > maxValidColorPart)
+proc matchColor(color: ColorRGBX): bool {.inline.} =
+  [color.r, color.g, color.b].allIt it < maxValidColorPart
 
 proc matchProbabilty(img: Image): seq[bool] =
   collect newseq:
     for i in matchPriority:
       patterns[i].allIt matchColor img[it.x, it.y]
+
+func extractNumberPics*(img: Image): seq[Image] =
+  numberXStarts.mapIt img.subImage(it, numberYRange.a, numberWidth,
+      numberYRange.len)
 
 proc extractNumbers*(img: Image): seq[int] =
   for numberImage in extractNumberPics img:
@@ -35,6 +36,6 @@ proc extractNumbers*(img: Image): seq[int] =
 
     result.add matchPriority[firstPriorityIndex]
 
-proc solveEquation*(img: Image): int {.inline.}=
+proc solveEquation*(img: Image): int {.inline.} =
   let numbers = extractNumbers(img)
   (numbers[0] * 10 + numbers[1]) + numbers[2]

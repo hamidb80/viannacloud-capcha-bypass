@@ -5,13 +5,11 @@ import detector, utils
 import httpclient, xmltree
 import nimquery, htmlparser
 
-# ------------------------------
 
 const baseUrl = "https://vshahed.viannacloud.ir/"
-
 # ------------------------------
 
-proc getCaptcha*(): string =
+proc downloadCaptcha*(): string =
   var client = newHttpClient()
   let
     res = client.get baseUrl
@@ -22,6 +20,9 @@ proc getCaptcha*(): string =
 
 
 proc genNumbersFromImages* =
+  ## extract numbers from chapta images and save them in:
+  ## ./lib/number/{n}/{uuid}.png
+
   walkDirFiles "./lib/raw", fpath, fname:
     let
       numbers = fname.filterIt it in '0'..'9'
