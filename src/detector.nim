@@ -1,6 +1,6 @@
 import strformat, sequtils, sugar
 import pixie
-import utils, compile, types
+import compile, types
 
 const
   numberXStarts = [6, 17, 55]
@@ -19,10 +19,10 @@ const
 proc matchColor(color: ColorRGBX): bool {.inline.} =
   [color.r, color.g, color.b].allIt it < maxValidColorPart
 
-proc matchProbabilty(img: Image): seq[bool] =
-  collect newseq:
-    for i in matchPriority:
-      patterns[i].allIt matchColor img[it.x, it.y]
+proc matchedNumber(img: Image): int =
+  for i in matchPriority:
+    if patterns[i].allIt matchColor img[it.x, it.y]:
+      return i
 
 func extractNumberPics*(img: Image): seq[Image] =
   numberXStarts.mapIt img.subImage(it, numberYRange.a, numberWidth,
@@ -30,11 +30,7 @@ func extractNumberPics*(img: Image): seq[Image] =
 
 proc extractNumbers*(img: Image): seq[int] =
   for numberImage in extractNumberPics img:
-    let
-      matches = matchProbabilty numberImage
-      firstPriorityIndex = matches.findItIndex it
-
-    result.add matchPriority[firstPriorityIndex]
+    result.add matchedNumber numberImage
 
 proc solveEquation*(img: Image): int {.inline.} =
   let numbers = extractNumbers(img)
