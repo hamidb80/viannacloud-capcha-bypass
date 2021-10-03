@@ -12,3 +12,4 @@ bin           = @["vshahed_captcha_bot"]
 
 requires "nim >= 1.5.1"
 requires "pixie >= 2.1.1"
+requires "nimquery >= 1.2.3"
