@@ -1,2 +1,4 @@
+.vscode
 lib/numbers/*
 !lib/numbers/.nomedia
+*.exe
