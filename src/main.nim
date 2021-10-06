@@ -4,7 +4,12 @@ import detector, prepare
 
 if isMainModule:
   if paramCount() == 0:
-    quit "please enter a path to capcha", 1
+    quit """
+commands:
+  download N  |  N is a number
+  extract
+  solve PATH  | PATH is a relative or absolute path to the capcha picture
+    """
 
   let params = commandLineParams() 
 

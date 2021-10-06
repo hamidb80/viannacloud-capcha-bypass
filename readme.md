@@ -1,5 +1,43 @@
 # viannacloud.ir capcha solver
 
+# Usage
+
+**download 4 images and put them in `./lib/temp`**
+
+*note:* 4 could be vary
+```
+app  download  4
+```
+
+**extract and organize numbers from images placed in `./lib/raw`** 
+```
+app  extract
+```
+
+**solve capcha locaed in `lib/raw/image-path.jpg`**
+*note:* `lib/raw/image-path.jpg` could be vary
+```
+app  solve  lib/raw/image-path.jpg
+```
+
+
+# DEV guide
+**install dependencies:**
+```
+nimble install
+```
+
+**test the with images placed in `lib/raw`**
+```
+nimble test
+```
+
+build using 
+```
+nim build
+```
+
+
 # How does this work?
 the capcha imagees that are used in  [viannacloud.ir](viannacloud.ir), are:
 1. same image size
@@ -43,20 +81,7 @@ i've exported the points using the software [that I put it's link earlier] and p
 
 I did the same for rest of the numbers...
 
-
 we're not done yet! there is one more thing to consider and that is very important
 
 and that is: *pattern matching order*
-
-
-you can run tests using:
-```
-nimble install
-nimble test
-nim -d:ssl -d:pixieUseStb c src/main.nim
-```
-```
-app  download  4
-app  extract
-app  solve  image-path.png/jpg
-```
+for example
