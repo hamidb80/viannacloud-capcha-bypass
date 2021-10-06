@@ -1,7 +1,5 @@
 # viannacloud.ir capcha solver
 
-# Usage
-
 # How does this work?
 the capcha imagees that are used in  [viannacloud.ir](viannacloud.ir), are:
 1. same image size
@@ -12,24 +10,15 @@ the capcha imagees that are used in  [viannacloud.ir](viannacloud.ir), are:
 and this characteristics makes it so vulnerable to hack
 
 ### NOTE
-> this repository is just for educational purposes and the owner does not take any responsibility about the users' puporses, the purpose of the reader/user may be different
+> this repository is made only for educational purposes, and the owner does not take any responsibility about the users' usage, the purpose of the reader/user may differ
 
 
 ## steps
 ### finding the extact place of each number
-**note**: if you wanna execute the correcspoding code of each section you must have nim >= 1.4.8 installed. then install the dependecies with this command:
-```
-nimble install
-```
-
-
 because the font and the position of the numbers do not change, we can easily find them.
 
 I've downloaded `80` capchas located in `/lib/raw/` 
 but you can download it with these command [you can replace the number `4` with what number of downloads you want]:
-```
-nim -d:ssl r .\src\prepare.nim download 4
-```
 
 [you can find them for yourself using another [software of mine](https://hamidb80.github.io/image-pixel-marker/). the guidence of this software exaplned [here](https://github.com/hamidb80/image-pixel-marker)]
 
@@ -44,15 +33,9 @@ after examining some capchas, I found the exact position of each number
 I crop them to examine them individually.
 
 **note**: these cropped images are not in the repository, if you want them, you can enter the following command, it will generated some folders in `lib/numbers/` containing some images cropped from images in `lib/raw/`
-```
-nim -d:pixieUseStb r .\src\prepare.nim extract
-```
 
-
-<div style="display:flex; justify-content: space-evenly">
-  <img style="max-height: 300px" src="./docs/4.png">
-  <img style="max-height: 300px" src="./docs/4-marked.png">
-</div>
+![alt](./docs/4.png)
+![alt](./docs/4-marked.png)
 
 after examining some of `4`s that is placed in `lib/numbers/4` I figured out the must have pixels of number 4
 
@@ -61,11 +44,19 @@ i've exported the points using the software [that I put it's link earlier] and p
 I did the same for rest of the numbers...
 
 
-```
- nim  -d:pixieUseStb r src/main.nim lib/raw/10+4.png
-```
+we're not done yet! there is one more thing to consider and that is very important
+
+and that is: *pattern matching order*
+
 
 you can run tests using:
 ```
+nimble install
 nimble test
+nim -d:ssl -d:pixieUseStb c src/main.nim
+```
+```
+app  download  4
+app  extract
+app  solve  image-path.png/jpg
 ```
