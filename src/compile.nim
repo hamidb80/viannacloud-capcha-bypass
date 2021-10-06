@@ -8,7 +8,7 @@ proc parsePatternPoints*(pattern: string): seq[Point] =
     last_opened_i = -1
 
   for (i, c) in pattern.pairs:
-    if c in [' ', ',']: continue
+    if c notin {'[', ']', '0'..'9'}: continue
     elif c == '[':
       opened += 1
       last_opened_i = i
