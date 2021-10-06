@@ -25,8 +25,7 @@ proc matchedNumber(img: Image): int =
       return i
 
 func extractNumberPics*(img: Image): seq[Image] =
-  numberXStarts.mapIt img.subImage(it, numberYRange.a, numberWidth,
-      numberYRange.len)
+  numberXStarts.mapIt img.subImage(it, numberYRange.a, numberWidth, numberYRange.len)
 
 proc extractNumbers*(img: Image): seq[int] =
   for numberImage in extractNumberPics img:

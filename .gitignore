@@ -1,5 +1,6 @@
 .vscode
 *.exe
+play.*
 
 lib/numbers/*
 !lib/numbers/.nomedia

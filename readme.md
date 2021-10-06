@@ -3,7 +3,6 @@
 # Usage
 
 **download 4 images and put them in `./lib/temp`**
-
 *note:* 4 could be vary
 ```
 app  download  4
@@ -75,13 +74,34 @@ I crop them to examine them individually.
 ![alt](./docs/4.png)
 ![alt](./docs/4-marked.png)
 
+left: real picture
+right: selected pixels [purple]
+
 after examining some of `4`s that is placed in `lib/numbers/4` I figured out the must have pixels of number 4
 
 i've exported the points using the software [that I put it's link earlier] and put them in `patterns/4.json`
+and did the same for rest of the numbers...
 
-I did the same for rest of the numbers...
+
+![alt](./docs/0-marked.png)
+![alt](./docs/1-marked.png)
+![alt](./docs/2-marked.png)
+![alt](./docs/3-marked.png)
+![alt](./docs/4-marked.png)
+![alt](./docs/5-marked.png)
+![alt](./docs/6-marked.png)
+![alt](./docs/7-marked.png)
+![alt](./docs/8-marked.png)
+![alt](./docs/9-marked.png)
+
 
 we're not done yet! there is one more thing to consider and that is very important
 
-and that is: *pattern matching order*
-for example
+and that is *pattern matching order*
+
+image you've got some chaos like this 
+![alt](./docs/chaos.png)
+
+there might be an 8 that because of that stupid lines and curves, not matches only with 8 pattern, but also with 9 or 6 or 0!
+
+so i defined a priority [8, 9, 6, 0, 3, 5, 2, 4, 7, 1] to ensure that numbers that are looked similar to other numbers with higher marked pixels, match first
