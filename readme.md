@@ -31,9 +31,9 @@ nimble install
 nimble test
 ```
 
-build using 
+build using | produce executable file
 ```
-nim build
+nimble build
 ```
 
 
