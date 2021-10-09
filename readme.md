@@ -68,7 +68,7 @@ after examining some capchas, I found the exact position of each number
 
 I crop them to examine them individually.
 
-**note**: these cropped images are not in the repository, if you want them, you can enter the following command, it will generated some folders in `lib/numbers/` containing some images cropped from images in `lib/raw/`
+**note**: these cropped images are not in the repository, if you want them, you can use commands in DEV guide Section
 
 ![alt](./docs/4.png)
 ![alt](./docs/4-marked.png)
