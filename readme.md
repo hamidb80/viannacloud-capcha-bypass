@@ -55,7 +55,6 @@ and this characteristics makes it so vulnerable to hack
 because the font and the position of the numbers do not change, we can easily find them.
 
 I've downloaded `80` capchas located in `/lib/raw/` 
-but you can download it with these command [you can replace the number `4` with what number of downloads you want]:
 
 [you can find them for yourself using another [software of mine](https://hamidb80.github.io/image-pixel-marker/). the guidence of this software exaplned [here](https://github.com/hamidb80/image-pixel-marker)]
 
